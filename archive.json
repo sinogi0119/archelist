@@ -10,11 +10,6 @@
         "completed": false
     },
     {
-        "title": "\ud0dc\ub4e4\uc9d5",
-        "date": "2024-07-26",
-        "completed": false
-    },
-    {
         "title": "\ud788\ub77c\ub9c8\uc9d5",
         "date": "2024-07-26",
         "completed": false
@@ -35,6 +30,21 @@
         "completed": false
     },
     {
+        "title": "\ud669\ud3c9(\uac00\ub8e8\ub2e4)",
+        "date": "2024-07-26",
+        "completed": false
+    },
+    {
+        "title": "\uc6a9",
+        "date": "2024-07-26",
+        "completed": false
+    },
+    {
+        "title": "\uce74\ub460",
+        "date": "2024-07-26",
+        "completed": false
+    },
+    {
         "title": "\uc54c\uae68\uae30",
         "date": "2024-07-26",
         "completed": false
@@ -50,7 +60,47 @@
         "completed": false
     },
     {
-        "title": "\uc6d0\ub300\ud018",
+        "title": "\uce68\uacf5",
+        "date": "2024-07-26",
+        "completed": false
+    },
+    {
+        "title": "\ud788\ub77c\ub9c8\uc11c\ubd80(\ub3d9\ubb3c)",
+        "date": "2024-07-26",
+        "completed": false
+    },
+    {
+        "title": "\ud788\ub77c\ub9c8\uc11c\ubd80(\uad50\ub2e8)",
+        "date": "2024-07-26",
+        "completed": false
+    },
+    {
+        "title": "\ud788\ub77c\ub9c8\ub3d9\ubd80(\uacc4\ub2e8)",
+        "date": "2024-07-26",
+        "completed": false
+    },
+    {
+        "title": "\ud788\ub77c\ub9c8\ub3d9\ubd80(\uc548\uac1c)",
+        "date": "2024-07-26",
+        "completed": false
+    },
+    {
+        "title": "\ub098\ucc28\uc26c\ub3d9\ubb3c",
+        "date": "2024-07-26",
+        "completed": false
+    },
+    {
+        "title": "444",
+        "date": "2024-07-26",
+        "completed": false
+    },
+    {
+        "title": "\uc601\uc12c",
+        "date": "2024-07-26",
+        "completed": false
+    },
+    {
+        "title": "\ub098\ucc28",
         "date": "2024-07-26",
         "completed": false
     },
@@ -61,11 +111,6 @@
     },
     {
         "title": "\ud48d\uc694",
-        "date": "2024-07-26",
-        "completed": false
-    },
-    {
-        "title": "\uc601\uc12c",
         "date": "2024-07-26",
         "completed": false
     }

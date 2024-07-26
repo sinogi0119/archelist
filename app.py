@@ -8,28 +8,40 @@ ARCHIVE_FILE = "archive.json"
 initial_schedules = [
     {"title": "낮징", "date": "2024-07-25"},
     {"title": "밤징", "date": "2024-07-25"},
-    {"title": "태들징", "date": "2024-07-25"},
     {"title": "히라마징", "date": "2024-07-25"},
     {"title": "촛대", "date": "2024-07-25"},
     {"title": "고래", "date": "2024-07-25"},
     {"title": "정원7단(정레공)", "date": "2024-07-25"},
+    {"title": "황평(가루다)", "date": "2024-07-25"},
+    {"title": "용", "date": "2024-07-25"},
+    {"title": "카둠", "date": "2024-07-25"},
     {"title": "알깨기", "date": "2024-07-25"},
 ]
 
 middle_schedules = [
     {"title": "채권퀘", "date": "2024-07-25"},
     {"title": "가족퀘", "date": "2024-07-25"},
-    {"title": "원대퀘", "date": "2024-07-25"},
+    {"title": "침공", "date": "2024-07-25"},
+    {"title": "히라마서부(동물)", "date": "2024-07-25"},
+    {"title": "히라마서부(교단)", "date": "2024-07-25"},
+    {"title": "히라마동부(계단)", "date": "2024-07-25"},
+    {"title": "히라마동부(안개)", "date": "2024-07-25"},
+    {"title": "나차쉬동물", "date": "2024-07-25"},
 ]
 
 right_schedules = [
+    {"title": "444", "date": "2024-07-25"},
+    {"title": "영섬", "date": "2024-07-25"},
+    {"title": "나차", "date": "2024-07-25"},
     {"title": "검가", "date": "2024-07-25"},
     {"title": "풍요", "date": "2024-07-25"},
-    {"title": "영섬", "date": "2024-07-25"},
 ]
 
 def main(page: ft.Page):
     page.title = "ArcheChecklist"
+    page.window_resizable = False
+    page.window_width = 1200
+    page.window_height = 600
 
     def load_archive():
         if os.path.exists(ARCHIVE_FILE):
@@ -94,6 +106,7 @@ def main(page: ft.Page):
 
     today = datetime.today().date()
     date_text = ft.Text(f"기준 일자: {today.strftime('%Y-%m-%d')}", size=20, weight="bold")
+    version_text = ft.Text("Version 1", size=12, weight="bold", color="gray")
 
     page.add(
         ft.Column(
@@ -104,9 +117,11 @@ def main(page: ft.Page):
                         ft.Container(
                             content=ft.Column(
                                 controls=[
-                                    ft.Text("기본 일정", size=18, weight="bold"),
+                                    ft.Text("일일 일정", size=18, weight="bold"),
                                     *left_checklist
-                                ]
+                                ],
+                                alignment=ft.MainAxisAlignment.START,
+                                horizontal_alignment=ft.CrossAxisAlignment.START,
                             ),
                             padding=10,
                             margin=5,
@@ -116,9 +131,11 @@ def main(page: ft.Page):
                         ft.Container(
                             content=ft.Column(
                                 controls=[
-                                    ft.Text("중간 일정", size=18, weight="bold"),
+                                    ft.Text("주간,추가적 일정", size=18, weight="bold"),
                                     *middle_checklist
-                                ]
+                                ],
+                                alignment=ft.MainAxisAlignment.START,
+                                horizontal_alignment=ft.CrossAxisAlignment.START,
                             ),
                             padding=10,
                             margin=5,
@@ -128,18 +145,29 @@ def main(page: ft.Page):
                         ft.Container(
                             content=ft.Column(
                                 controls=[
-                                    ft.Text("오른쪽 일정", size=18, weight="bold"),
+                                    ft.Text("인던 일정", size=18, weight="bold"),
                                     *right_checklist
-                                ]
+                                ],
+                                alignment=ft.MainAxisAlignment.START,
+                                horizontal_alignment=ft.CrossAxisAlignment.START,
                             ),
                             padding=10,
                             margin=5,
                             border=ft.border.all(1, "black"),
                             width=300
                         ),
-                    ]
-                )
-            ]
+                    ],
+                    alignment=ft.MainAxisAlignment.START,
+                    vertical_alignment=ft.CrossAxisAlignment.START,
+                ),
+                ft.Container(
+                    content=version_text,
+                    alignment=ft.alignment.bottom_right,
+                    padding=ft.padding.only(right=10, bottom=10)
+                ),
+            ],
+            alignment=ft.MainAxisAlignment.START,
+            horizontal_alignment=ft.CrossAxisAlignment.START,
         )
     )
 

@@ -4,6 +4,7 @@ import os
 from datetime import datetime, timedelta
 
 ARCHIVE_FILE = "archive.json"
+CUSTOM_FILE = "custom.json"
 
 initial_schedules = [
     {"title": "낮징", "date": "2024-07-25"},
@@ -30,11 +31,15 @@ middle_schedules = [
 ]
 
 right_schedules = [
-    {"title": "444", "date": "2024-07-25"},
+    {"title": "도서관", "date": "2024-07-25"},
     {"title": "영섬", "date": "2024-07-25"},
     {"title": "나차", "date": "2024-07-25"},
     {"title": "검가", "date": "2024-07-25"},
     {"title": "풍요", "date": "2024-07-25"},
+]
+
+custom_schedules = [
+    {"title": "", "date":""}
 ]
 
 def main(page: ft.Page):
@@ -53,30 +58,25 @@ def main(page: ft.Page):
     def save_archive(archive):
         with open(ARCHIVE_FILE, "w") as file:
             json.dump(archive, file, indent=4)
-        print(f"Archive saved: {archive}")
+        #print(f"Archive saved: {archive}")
 
     def update_archive():
         global archive
         today = datetime.today().date()
         one_week_ago = today - timedelta(days=7)
-
         archive = load_archive()
-
         current_date_records = [record for record in archive if record['date'] == today.strftime("%Y-%m-%d")]
         if not current_date_records:
             for game in initial_schedules + middle_schedules + right_schedules:
                 existing_status = next((record['completed'] for record in archive if record['title'] == game['title'] and record['date'] == today.strftime("%Y-%m-%d")), False)
                 archive.append({"title": game['title'], "date": today.strftime("%Y-%m-%d"), "completed": existing_status})
-
         archive = [record for record in archive if datetime.strptime(record['date'], "%Y-%m-%d").date() > one_week_ago]
-
         latest_record_date = max(datetime.strptime(record['date'], "%Y-%m-%d").date() for record in archive)
         if latest_record_date != today:
             archive = [record for record in archive if record['date'] == today.strftime("%Y-%m-%d")]
             for game in initial_schedules + middle_schedules + right_schedules:
                 if not any(record['title'] == game['title'] for record in archive):
                     archive.append({"title": game['title'], "date": today.strftime("%Y-%m-%d"), "completed": False})
-
         save_archive(archive)
 
     def update_check(event):
@@ -103,7 +103,6 @@ def main(page: ft.Page):
     left_checklist = [create_checklist_item(game) for game in initial_schedules]
     middle_checklist = [create_checklist_item(game) for game in middle_schedules]
     right_checklist = [create_checklist_item(game) for game in right_schedules]
-
     today = datetime.today().date()
     date_text = ft.Text(f"기준 일자: {today.strftime('%Y-%m-%d')}", size=20, weight="bold")
     version_text = ft.Text("Version 1", size=12, weight="bold", color="gray")
